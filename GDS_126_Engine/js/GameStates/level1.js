@@ -90,7 +90,7 @@ for(let i=0; i<100; i++)
 	//bullets[i].img.src="images/mrt.jpg"
 	bullets[i].makeSprite(playerData)
 	bullets[i].y=-10000
-	bullets[i].changeState(`walk`)
+	bullets[i].changeState(`projectile`)
 }
 
 //console.log(bullets)
@@ -161,10 +161,10 @@ gameStates[`level1`] = function()
 			shotTimer = shotDelay
 			console.log(`boom`)
 
-			bullets[currentBullet].vx = 5*wiz.dir;
+			bullets[currentBullet].vx = 10*wiz.dir;
 			bullets[currentBullet].world = level;
-			bullets[currentBullet].x = wiz.x-level.x + (wiz.dir * 96) ;
-			bullets[currentBullet].y = wiz.y + 20;
+			bullets[currentBullet].x = wiz.x-level.x + (wiz.dir * 90) ;
+			bullets[currentBullet].y = wiz.y + 0;
 			bullets[currentBullet].dir = wiz.dir;
 			
 			sounds.play(`scream`)

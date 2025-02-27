@@ -24,10 +24,23 @@ var playerData ={
 		crouch: `images/PumpkinSpriteCrouch.png`,
 		jump: `images/PumpkinSpriteJump.png`,
 		attack: `images/PumpkinSpriteAttack (1).png`,
+		projectile: `images/PumpkinProjectile.png`,
 
 	},
 	states:{
 		//The idle animation 
+		projectile:
+		{
+			fps:3,
+			cycle:true,
+			frames:
+			[
+				{width:32, height:32, startX:0, startY:0},
+				{width:32, height:32, startX:32, startY:0},
+				{width:32, height:32, startX:32*2, startY:0},
+				{width:32, height:32, startX:32*3, startY:0},
+			]
+		},
     	idle:
 		{
 			fps:8,

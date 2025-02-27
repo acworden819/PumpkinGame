@@ -295,6 +295,7 @@ function GameObject(obj)
 	this.move = function()
 	{
 		this.x += this.vx;
+		if (this.currentState != "projectile")
 		this.y += this.vy;
 	}
 

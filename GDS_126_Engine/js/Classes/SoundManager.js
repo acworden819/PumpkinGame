@@ -7,12 +7,13 @@ class SoundManager
              this[_soundNodes[i].getAttribute(`name`)]=_soundNodes[i]
         }
     }
-    play(_sound, _start=0, _loop=false)
+    play(_sound, _start=0, _loop=false, _volume=1)
     {
         try
         {
             this[_sound].currentTime=_start
             this[_sound].loop = _loop
+            this[_sound].volume = _volume
             this[_sound].play();
         }
         catch

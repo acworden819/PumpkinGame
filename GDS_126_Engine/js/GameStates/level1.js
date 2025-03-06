@@ -97,16 +97,24 @@ for(let i=0; i<100; i++)
 
 /*------------------^^BULLET STUFF^^----------------------*/
 
+let lock = false
+let step = 0
 gameStates[`level1`] = function()
 {
+
 	if(!keys[`W`] && !keys[`S`] && !keys[`D`] && !keys[`A`] && !keys[` `] && canShoot && wiz.canJump)
 	{
 		wiz.changeState(`idle`)
+		lock = false
 	}
 	
 	
 	if(keys[`S`])
 	{
+		if (lock==false){
+			lock = true
+			sounds.play(`woosh`)
+		}
 		wiz.top={x:0,y:0};
 		wiz.changeState(`crouch`)
 	}
@@ -120,9 +128,16 @@ gameStates[`level1`] = function()
 		wiz.dir=1;
 		if(wiz.currentState != `crouch`) 
 		{
-			if(wiz.canJump)wiz.changeState(`walk`)
+			if(wiz.canJump){
+				wiz.changeState(`walk`)
+				if (step % 20 == 0) {
+					sounds.play(`stomp`)
+		
+				}
+			}
 			wiz.vx += wiz.force
-			
+			step ++
+		
 		}
 		
 	}
@@ -131,8 +146,16 @@ gameStates[`level1`] = function()
 		wiz.dir=-1;
 		if(wiz.currentState != `crouch` ) 
 		{
-			if(wiz.canJump)wiz.changeState(`walk`)
+			if(wiz.canJump){
+				wiz.changeState(`walk`)
+				if (step % 20 == 0) {
+					sounds.play(`stomp`)
+		
+				}
+			}
 			wiz.vx += -wiz.force
+		step ++
+
 		}
 		
 	}
@@ -141,7 +164,7 @@ gameStates[`level1`] = function()
 		wiz.canJump = false;
 		wiz.vy = wiz.jumpHeight;
 		wiz.changeState(`jump`)
-		sounds.play(`splode`,1)
+		sounds.play(`woosh`)
 	}
 	shotTimer--;
 	if(shotTimer <=0)
@@ -167,7 +190,7 @@ gameStates[`level1`] = function()
 			bullets[currentBullet].y = wiz.y + 0;
 			bullets[currentBullet].dir = wiz.dir;
 			
-			sounds.play(`scream`)
+			sounds.play(`splode`, 0, false, .8)
 
 			currentBullet++;
 			if(currentBullet>=bullets.length)

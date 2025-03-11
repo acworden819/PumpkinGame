@@ -15,7 +15,7 @@ wiz.force=1
 //The ground
 var ground = new GameObject({width:canvas.width*10, x:canvas.width*10/2-200,height:64,y:canvas.height-32, color:"green", world:level})
 ground.img.src=`images/ground.png`
-
+//
 //A platform
 var plat = new GameObject({width:256, height:64,y:canvas.height-200,x:100000, color:"green", world:level})
 

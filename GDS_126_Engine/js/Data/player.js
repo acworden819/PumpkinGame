@@ -25,7 +25,7 @@ var playerData ={
 		jump: `images/PumpkinSpriteJump.png`,
 		attack: `images/PumpkinSpriteAttack (1).png`,
 		projectile: `images/PumpkinProjectile.png`,
-
+		
 	},
 	states:{
 		//The idle animation 
